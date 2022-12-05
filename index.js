@@ -1,0 +1,11 @@
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
+import "./db/configDb.js";
+import vehiclesRouter from "./Router/vehiculoRouter.js";
+const app = express();
+app.use(cors({ origin: "*" }));
+app.use(express.json());
+app.use("/api/v1/vehiculos", vehiclesRouter);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log("🚀 Server Up.."));
